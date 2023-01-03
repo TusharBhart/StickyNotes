@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_nav"
+    app:startDestination="@id/listFragment">
+
+    <fragment
+        android:id="@+id/listFragment"
+        android:name="com.example.stickynotes.list.listFragment"
+        android:label="All Notes"
+        tools:layout="@layout/fragment_list" >
+        <action
+            android:id="@+id/action_listFragment_to_addFragment"
+            app:destination="@id/addFragment" />
+        <action
+            android:id="@+id/action_listFragment_to_viewFragment"
+            app:destination="@id/viewFragment" />
+        <action
+            android:id="@+id/action_listFragment_to_updateFragment2"
+            app:destination="@id/updateFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/addFragment"
+        android:name="com.example.stickynotes.add.addFragment"
+        android:label="Add"
+        tools:layout="@layout/fragment_add" >
+        <action
+            android:id="@+id/action_addFragment_to_listFragment"
+            app:destination="@id/listFragment"
+            app:popUpTo="@id/listFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/updateFragment2"
+        android:name="com.example.stickynotes.UpdateFragment"
+        android:label="Update"
+        tools:layout="@layout/fragment_update" >
+        <argument
+            android:name="currentUser"
+            app:argType="com.example.stickynotes.data.User" />
+        <action
+            android:id="@+id/action_updateFragment2_to_listFragment"
+            app:destination="@id/listFragment"
+            app:popUpTo="@id/listFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/viewFragment"
+        android:name="com.example.stickynotes.ViewFragment"
+        android:label="View"
+        tools:layout="@layout/fragment_view" >
+        <action
+            android:id="@+id/action_viewFragment_to_updateFragment2"
+            app:destination="@id/updateFragment2"
+            app:popUpTo="@id/viewFragment" />
+        <action
+            android:id="@+id/action_viewFragment_to_listFragment"
+            app:destination="@id/listFragment"
+            app:popUpTo="@id/listFragment"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="viewpass"
+            app:argType="com.example.stickynotes.data.User" />
+    </fragment>
+</navigation>
